@@ -4,4 +4,4 @@
       path: zshrc
     ~/.nanorc: nanorc
 - shell:
-    - ["make -C nanorc.d", "Setting up NanoRC"]
+    - ["rm -rf ~/.config/nano && mkdir -p .config && make -C nanorc.d && mv nanorc.d/build ~/.config/nano", "Setting up NanoRC"]
