@@ -2,3 +2,6 @@
     ~/.zshrc:
       force: true
       path: zshrc
+    ~/.nanorc: nanorc
+- shell:
+    - ["make -C nanorc.d", "Setting up NanoRC"]
