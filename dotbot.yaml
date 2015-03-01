@@ -1,7 +1,12 @@
+- shell:
+    - ["git submodule update --init --recursive", "Setting up submodules"]
+
 - link:
     ~/.zshrc:
       force: true
       path: zshrc
-    ~/.nanorc: nanorc
+    ~/.nanorc:
+      force: true
+      path: nanorc
 - shell:
-    - ["rm -rf ~/.config/nano && mkdir -p .config && make -C nanorc.d && mv nanorc.d/build ~/.config/nano", "Setting up NanoRC"]
+    - ["make -C nanorc.d", "Setting up nanord"]

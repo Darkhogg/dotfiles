@@ -1,1 +1,1 @@
-include ~/.config/nano/ALL.nanorc
+include ~/.dotfiles/nanorc.d/build/ALL.nanorc
