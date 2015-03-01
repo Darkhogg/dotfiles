@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -e
+
+BASEDIR="$(readlink -f "$(dirname "${BASH_SOURCE[0]}")")"
+
+git add -A
+git commit
+
+git pull
+
+cd "${BASEDIR}"
+git submodule update --remote
+
+git add -A
+git commit -m "Updated remotes @ $(date -u -Is)"
+
+git push
