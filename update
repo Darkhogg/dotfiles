@@ -4,19 +4,19 @@ set -e
 BASEDIR="$(readlink -f "$(dirname "${BASH_SOURCE[0]}")")"
 cd "${BASEDIR}"
 
-echo 'Commit current changes...'
+echo '> Commit current changes...'
 git add -A
-git commit
+git diff --cached --exit-code || git commit
 
-echo 'Pull changes from upstream...'
+echo '> Pull changes from upstream...'
 git pull
 
-echo 'Update submodules...'
+echo '> Update submodules...'
 git submodule update --remote
 
-echo 'Commit submodule changes...'
+echo '> Commit submodule changes...'
 git add -A
-git commit -m "Updated remotes @ $(date -u -Is)"
+git diff --cached --exit-code || git commit -m "Updated remotes @ $(date -u -Is)"
 
-echo 'Push to upstream...'
+echo '> Push to upstream...'
 git push
