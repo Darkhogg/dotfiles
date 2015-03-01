@@ -18,7 +18,7 @@ source "$ZSH/oh-my-zsh.sh"
 # === SOURCING === #
 
 # Arch Linux command-not-found
-[ -f '/etc/profile.d/cnf.sh' ]; && source '/etc/profile.d/cnf.sh'
+[ -f '/etc/profile.d/cnf.sh' ] && source '/etc/profile.d/cnf.sh'
 
 # Travis
 [ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
@@ -28,8 +28,8 @@ source "$ZSH/oh-my-zsh.sh"
 # === ALIASES === #
 
 # Alias for hub
-[ type hub &>/dev/null ] && alias git=hub
-[ type subl3 &>/dev/null ] && alias subl=subl3
+type hub &>/dev/null && alias git=hub
+type subl3 &>/dev/null && alias subl=subl3
 
 # Alias for reset
 alias reset='env reset; source ~/.zshrc'
@@ -68,7 +68,7 @@ export BII_MAX_BLOCK_SIZE=9999999999
 # === PACKAGE MANAGER === #
 
 # Pacaur package manager
-[ type pacaur &>/dev/null ] && {
+type pacaur &>/dev/null && {
     alias pm=pacaur
     alias pmnc='pacaur --noconfirm --noedit'
     alias pmupd='pacaur -Syu --noconfirm --noedit'
@@ -79,6 +79,6 @@ export BII_MAX_BLOCK_SIZE=9999999999
 }
 
 # Update mirrors
-[ type pacman-mirrors ] \
-    && alias pmmir='sudo pacman-mirrors -g'
+type pacman-mirrors &>/dev/null \
+    && alias pmmir='sudo pacman-mirrors -g' \
     || alias pmmir='sudo reflector -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
