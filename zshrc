@@ -1,7 +1,8 @@
 # === OH-MY-ZSH ===
 
 # Path to oh-my-zsh
-ZSH=/usr/share/oh-my-zsh/
+ZSH="$HOME/.dotfiles/oh-my-zsh/"
+ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh-custom/"
 
 # Theme for OMZ
 ZSH_THEME='avit'
