@@ -5,8 +5,7 @@ ZSH="$HOME/.dotfiles/oh-my-zsh/"
 ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh-custom/"
 
 # Theme for OMZ
-ZSH_THEME='avit'
-[ -f "$ZSH/themes/dhg.zsh-theme" ] && ZSH_THEME='dhg'
+ZSH_THEME='dhg'
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
