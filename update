@@ -17,3 +17,5 @@ git diff --cached --exit-code &>/dev/null \
     || git commit -m "Updated remotes @ $(date -u -Is)"
 
 git push
+
+./setup

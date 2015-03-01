@@ -9,4 +9,4 @@
       force: true
       path: nanorc
 - shell:
-    - ["make -C nanorc.d", "Setting up nanord"]
+    - ["make -C nanorc.d", "Setting up nanorc"]
