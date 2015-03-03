@@ -48,7 +48,7 @@ alias npm='PYTHON=python2 npm'
 export GCC_COLORS='error=01;31:warning=01;33:note=01;36:caret=01;32:locus=01:quote=01'
 
 # MAKEFLAGS for multi-core compilation
-[ -n "$NCPUS" ] && export MAKEFLAGS="-j$NCPUS"
+type nproc &>/dev/null && export MAKEFLAGS="$MAKEFLAGS -j$(nproc)"
 
 # Export this for 256-color detection
 export TERM=xterm-256color
