@@ -8,5 +8,8 @@
     ~/.nanorc:
       force: true
       path: nanorc
+    ~/.gnupg/gpg.conf:
+      force: true
+      path: gpg.conf
 - shell:
     - ["make -C nanorc.d", "Setting up nanorc"]
