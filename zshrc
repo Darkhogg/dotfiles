@@ -59,10 +59,6 @@ export PATH="$HOME/.bin":"$HOME/.local/bin":"$PATH"
 # For the love of everything, use nano!!
 export EDITOR=nano
 
-# Biicode's limits workaround
-export BII_BLOCK_NUMFILES_LIMIT=999999
-export BII_MAX_BLOCK_SIZE=9999999999
-
 
 # ======================= #
 # === PACKAGE MANAGER === #
@@ -76,6 +72,10 @@ type pacaur &>/dev/null && {
     alias pmin='pmnc -S'  # PM Install
     alias pmrm='pmnc -R'  # PM Remove
     alias pmsr='pmnc -Ss' # PM Search
+
+    [[ "$(uname -m)" == arm* ]] && {
+        pmupd='pacaur -Syur --noconfirm; pacaur -Syua --noconfirm --noedit --ignorearch'
+    }
 }
 
 # Update mirrors
