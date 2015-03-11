@@ -10,6 +10,11 @@
       path: nanorc
     ~/.gnupg/gpg.conf:
       force: true
+      create: true
       path: gpg.conf
+    ~/.config/pacaur/config:
+      force: true
+      create: true
+      path: pacaur.conf
 - shell:
     - ["make -C nanorc.d", "Setting up nanorc"]

@@ -72,10 +72,6 @@ type pacaur &>/dev/null && {
     alias pmin='pmnc -S'  # PM Install
     alias pmrm='pmnc -R'  # PM Remove
     alias pmsr='pmnc -Ss' # PM Search
-
-    [[ "$(uname -m)" == arm* ]] && {
-        pmupd='pacaur -Syur --noconfirm; pacaur -Syua --noconfirm --noedit --ignorearch'
-    }
 }
 
 # Update mirrors
