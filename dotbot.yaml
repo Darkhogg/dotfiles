@@ -2,19 +2,27 @@
     - ["git submodule update --init --recursive", "Setting up submodules"]
 
 - link:
-    ~/.zshrc:
+    ~/.gitconfig:
       force: true
-      path: zshrc
-    ~/.nanorc:
-      force: true
-      path: nanorc
+      path: gitconfig
+
     ~/.gnupg/gpg.conf:
       force: true
       create: true
       path: gpg.conf
+
+    ~/.nanorc:
+      force: true
+      path: nanorc
+
     ~/.config/pacaur/config:
       force: true
       create: true
       path: pacaur.conf
+
+    ~/.zshrc:
+      force: true
+      path: zshrc
+
 - shell:
     - ["make -C nanorc.d", "Setting up nanorc"]
