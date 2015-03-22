@@ -4,9 +4,6 @@
 [submodule "nanorc.d"]
 	path = nanorc.d
 	url = https://github.com/nanorc/nanorc
-[submodule "dhg.zsh-theme"]
-	path = dhg.zsh-theme
-	url = https://github.com/Darkhogg/dhg.zsh-theme.git
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git

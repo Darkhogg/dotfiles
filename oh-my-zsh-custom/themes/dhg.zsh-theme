@@ -19,7 +19,7 @@ local _c_git_branch="$fg_bold[magenta]"
 local _c_git_dirty="$fg_bold[white]"
 local _c_prompt="$fg_bold[white]"
 local _c_venv="$fg_bold[cyan]"
-local _c_clock="$fg_bold[white]"
+#local _c_clock="$fg_bold[white]"
 
 local _o_hbar=$(printf "\e(0\x71\e(B")
 
@@ -58,12 +58,12 @@ local _p_path="%{$_c_path%}%~%{$_c_separator%}$_p_separator"
 local _p_status="%(?::%{$fg_bold[red]%}[%?]$_p_separator%s)"
 local _p_dollar="$(if [ "$UID" -eq "0" ]; then echo '#'; else echo '$'; fi)"
 
-local _p_clock="%{$_c_clock%}%T"
+#local _p_clock="%{$_c_clock%}%T"
 
 PROMPT="\$(hor_line)$_p_status$_p_user$_p_host$_p_path\$(git_prompt_info)%{$_c_venv%}\$(venv_prompt_info)
 %{$_c_prompt%}$_p_dollar %{$_c_reset%}"
 
-RPROMPT="%{$(tput cuu 1)%}$_p_separator$_p_clock%{$(tput cud 1)$_c_reset%}"
+RPROMPT="%{$(tput cuu 1)%}$_p_separator%{$(tput cud 1)$_c_reset%}"
 
 # Git plugin configuration
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$_c_git_branch%}"
