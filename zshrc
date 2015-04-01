@@ -10,7 +10,10 @@ ZSH_THEME='dhg'
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git npm archlinux systemd virtualenv virtualenvwrapper)
+plugins=(git npm archlinux systemd virtualenv)
+type virtualenvwrapper.sh &>/dev/null && \
+    plugins+=(virtualenvwrapper)
+
 source "$ZSH/oh-my-zsh.sh"
 
 

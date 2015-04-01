@@ -1,7 +1,10 @@
 - shell:
     - ["git submodule update --init --recursive", "Setting up submodules"]
 
-- link:
+-
+  shell:
+    - ["touch ~/.hushlogin", "Hush Login"]
+  link:
     ~/.gitconfig:
       force: true
       path: gitconfig
