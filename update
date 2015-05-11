@@ -1,21 +1,31 @@
 #!/usr/bin/env bash
 set -e
 
+msg() {
+    printf "$(tput bold)%s$(tput sgr0)\n" "$*"
+}
+
 BASEDIR="$(readlink -f "$(dirname "${BASH_SOURCE[0]}")")"
 cd "${BASEDIR}"
 
+msg 'Commit changes...'
 git add -A
 git diff --cached --exit-code &>/dev/null \
     || git commit
 
+msg 'Pull remote changes...'
 git pull
 
+msg 'Update submodules...'
 git submodule update --remote
 
+msg 'Commit submodule changes...'
 git add -A
 git diff --cached --exit-code &>/dev/null \
     || git commit -m "Updated remotes @ $(date -u -Is)"
 
+msg 'Push local changes...'
 git push
 
+msg 'Set up...'
 ./setup
