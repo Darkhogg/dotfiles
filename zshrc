@@ -1,3 +1,6 @@
+printf "$(tput bold; tput setf blue) :: $(tput sgr0)Loading ZshRC...\r"
+
+# =================
 # === OH-MY-ZSH ===
 
 # Path to oh-my-zsh
@@ -81,3 +84,7 @@ type pacaur &>/dev/null && {
 type pacman-mirrors &>/dev/null \
     && alias pmmir='sudo pacman-mirrors -g' \
     || alias pmmir='sudo reflector -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
+
+# =========== #
+# === END === #
+tput el
