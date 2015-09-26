@@ -71,7 +71,7 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$_c_reset%}$_p_separator"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$_c_git_dirty%}*"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-export VIRTUAL_ENV_DISABLE_PROMPT=
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 unset hor_line
 unset venv_prompt_info

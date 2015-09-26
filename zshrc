@@ -1,5 +1,7 @@
 printf "$(tput bold; tput setf blue) :: $(tput sgr0)Loading ZshRC...\r"
 
+alias _check='type &>/dev/null'
+
 # =================
 # === OH-MY-ZSH ===
 
@@ -14,8 +16,7 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(git npm archlinux systemd virtualenv)
-type virtualenvwrapper.sh &>/dev/null && \
-    plugins+=(virtualenvwrapper)
+_check virtualenvwrapper.sh && plugins+=(virtualenvwrapper)
 
 source "$ZSH/oh-my-zsh.sh"
 
@@ -34,8 +35,8 @@ source "$ZSH/oh-my-zsh.sh"
 # === ALIASES === #
 
 # Alias for hub
-type hub &>/dev/null && alias git=hub
-type subl3 &>/dev/null && alias subl=subl3
+_check hub && alias git=hub
+_check subl3 && alias subl=subl3
 
 # Alias for reset
 alias reset='env reset; source ~/.zshrc'
@@ -54,7 +55,7 @@ alias npm='PYTHON=python2 npm'
 export GCC_COLORS='error=01;31:warning=01;33:note=01;36:caret=01;32:locus=01:quote=01'
 
 # MAKEFLAGS for multi-core compilation
-type nproc &>/dev/null && export MAKEFLAGS="$MAKEFLAGS -j$(nproc)"
+_check nproc && export MAKEFLAGS="$MAKEFLAGS -j$(nproc)"
 
 # Export this for 256-color detection
 export TERM=xterm-256color
@@ -70,7 +71,7 @@ export EDITOR=nano
 # === PACKAGE MANAGER === #
 
 # Pacaur package manager
-type pacaur &>/dev/null && {
+_check pacaur && {
     alias pm=pacaur
     alias pmnc='pacaur --noconfirm --noedit'
     alias pmupd='pacaur -Syu --noconfirm --noedit'
@@ -81,10 +82,11 @@ type pacaur &>/dev/null && {
 }
 
 # Update mirrors
-type pacman-mirrors &>/dev/null \
+_check pacman-mirrors \
     && alias pmmir='sudo pacman-mirrors -g' \
     || alias pmmir='sudo reflector -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
 # =========== #
 # === END === #
+unalias _check
 tput el
