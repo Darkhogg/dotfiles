@@ -61,7 +61,7 @@ _check nproc && export MAKEFLAGS="$MAKEFLAGS -j$(nproc)"
 export TERM=xterm-256color
 
 # Add local directories to the PATH
-export PATH="$HOME/.bin":"$HOME/.local/bin":"$PATH"
+export PATH="$HOME/.bin":"$HOME/.gem/ruby/2.2.0/bin":"$HOME/.local/bin":"$PATH"
 
 # For the love of everything, use nano!!
 export EDITOR=nano
