@@ -81,6 +81,15 @@ _check pacaur && {
     alias pmsr='pmnc -Ss' # PM Search
 }
 
+# Apt-Get package manager
+_check apt-get && {
+    alias pm=apt-get
+    alias pmnc='apt-get -y'
+  
+    alias pmin='pmnc install'
+    alias pmrm='pmnc remove'
+}
+
 # Update mirrors
 _check pacman-mirrors \
     && alias pmmir='sudo pacman-mirrors -g' \
