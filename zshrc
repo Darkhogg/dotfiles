@@ -25,11 +25,13 @@ source "$ZSH/oh-my-zsh.sh"
 # === SOURCING === #
 
 # Arch Linux command-not-found
-[ -f '/etc/profile.d/cnf.sh' ] && source '/etc/profile.d/cnf.sh'
+[ -s '/etc/profile.d/cnf.sh' ] && source '/etc/profile.d/cnf.sh'
 
 # Travis
-[ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
+[ -s "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
 
+# Node Version manager
+[ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
 
 # =============== #
 # === ALIASES === #
@@ -42,11 +44,11 @@ _check subl3 && alias subl=subl3
 alias reset='env reset; source ~/.zshrc'
 
 # Fix GREP_OPTIONS messages
-alias grep="grep $GREP_OPTIONS"
+alias grep='\grep $GREP_OPTIONS'
 unset GREP_OPTIONS
 
 # Fix problems with node-gyp and python3
-alias npm='PYTHON=python2 npm'
+alias npm='PYTHON=python2 \npm'
 
 
 # === VARIABLES ===
@@ -64,7 +66,8 @@ export TERM=xterm-256color
 export PATH="$HOME/.bin":"$HOME/.gem/ruby/2.2.0/bin":"$HOME/.local/bin":"$PATH"
 
 # For the love of everything, use nano!!
-export EDITOR=nano
+export VISUAL=nano
+export EDITOR="$VISUAL"
 
 
 # ======================= #
@@ -73,8 +76,8 @@ export EDITOR=nano
 # Pacaur package manager
 _check pacaur && {
     alias pm=pacaur
-    alias pmnc='pacaur --noconfirm --noedit'
-    alias pmupd='pacaur -Syu --noconfirm --noedit'
+    alias pmnc='pm --noconfirm --noedit'
+    alias pmupd='pmnc -Syu'
 
     alias pmin='pmnc -S'  # PM Install
     alias pmrm='pmnc -R'  # PM Remove
@@ -84,7 +87,8 @@ _check pacaur && {
 # Apt-Get package manager
 _check apt-get && {
     alias pm=apt-get
-    alias pmnc='apt-get -y'
+    alias pmnc='pm -y'
+    alias pmupd='pmnc update && pmnc upgrade'
   
     alias pmin='pmnc install'
     alias pmrm='pmnc remove'
