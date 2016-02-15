@@ -16,7 +16,7 @@
 
     ~/.nanorc:
       force: true
-      path: nanorc
+      path: nanorc.d/build/ALL.nanorc
 
     ~/nodemon.json:
       force: true
