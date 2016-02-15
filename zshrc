@@ -36,6 +36,8 @@ _check virtualenvwrapper.sh && plugins+=(virtualenvwrapper)
 # OhMyZsh!!
 source "$ZSH/oh-my-zsh.sh"
 
+# Node Version manager
+[ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
 
 # =============== #
 # === ALIASES === #
@@ -48,11 +50,11 @@ _check subl3 && alias subl=subl3
 alias reset='env reset; source ~/.zshrc'
 
 # Fix GREP_OPTIONS messages
-alias grep="grep $GREP_OPTIONS"
+alias grep='\grep $GREP_OPTIONS'
 unset GREP_OPTIONS
 
 # Fix problems with node-gyp and python3
-alias npm='PYTHON=python2 npm'
+alias npm='PYTHON=python2 \npm'
 
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
@@ -73,7 +75,8 @@ export TERM=xterm-256color
 export PATH="$HOME/.bin":"$HOME/.gem/ruby/2.2.0/bin":"$HOME/.local/bin":"$PATH"
 
 # For the love of everything, use nano!!
-export EDITOR=nano
+export VISUAL=nano
+export EDITOR="$VISUAL"
 
 
 
