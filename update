@@ -22,7 +22,7 @@ git submodule update --remote
 msg 'Commit submodule changes...'
 git add -A
 git diff --cached --exit-code &>/dev/null \
-    || git commit -m "Updated remotes @ $(date -u -Is)"
+    || git commit -m "Update remotes @ $(date -u -Is)"
 
 msg 'Push local changes...'
 git push
