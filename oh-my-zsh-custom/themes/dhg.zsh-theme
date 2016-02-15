@@ -18,21 +18,24 @@ local _c_remote="$fg[cyan]"
 local _c_git_branch="$fg_bold[magenta]"
 local _c_git_dirty="$fg_bold[white]"
 local _c_prompt="$fg_bold[white]"
-local _c_venv="$fg_bold[cyan]"
+local _c_venv="$fg[cyan]"
+local _c_venv_env="$fg_bold[cyan]"
+local _c_nvm="$fg[cyan]"
+local _c_nvm_ver="$fg_bold[cyan]"
 #local _c_clock="$fg_bold[white]"
 
 local _o_hbar=$(printf "\e(0\x71\e(B")
 
-function venv_prompt_info () {
-    if [[ ! -z $VIRTUAL_ENV ]]; then
-        printf "$(basename "$VIRTUAL_ENV")$_p_separator"
+function _p_venv {
+    if [[ -n $VIRTUAL_ENV ]]; then
+        printf "%s" "%{$_c_reset%}%{$_c_venv_env%}venv %{$_c_venv_env%}$(basename "$VIRTUAL_ENV")$_p_separator"
     fi
 }
 
-function hor_line() {
-    #printf '%s' "%{$_c_separator%}"
-    #printf '%*s\n' "${COLUMNS:-$(tput cols)} - 1" '_' | sed "s/ /$_o_hbar/g" | tr _ ' '
-    #printf '\r%s' "%{$_c_reset%}"
+function _p_nvm {
+  if [[ -n $NVMA_PROMPT ]]; then
+    printf "%s" "%{$_c_reset%}%{$_c_nvm%}nvm %{$_c_nvm_ver%}$(nvm current)$_p_separator"
+  fi
 }
 
 # Prompt separator
@@ -56,11 +59,11 @@ fi
 local _p_path="%{$_c_path%}%~%{$_c_separator%}$_p_separator"
 
 local _p_status="%(?::%{$fg_bold[red]%}[%?]$_p_separator%s)"
-local _p_dollar="$(if [ "$UID" -eq "0" ]; then echo '#'; else echo '$'; fi)"
+local _p_dollar='$'; [[ $UID -eq 0 ]] && _p_dollar='#'
 
 #local _p_clock="%{$_c_clock%}%T"
 
-PROMPT="\$(hor_line)$_p_status$_p_user$_p_host$_p_path\$(git_prompt_info)%{$_c_venv%}\$(venv_prompt_info)
+PROMPT="$_p_status$_p_user$_p_host$_p_path\$(git_prompt_info)\$(_p_venv)\$(_p_nvm)
 %{$_c_prompt%}$_p_dollar %{$_c_reset%}"
 
 RPROMPT="%{$(tput cuu 1)%}$_p_separator%{$(tput cud 1)$_c_reset%}"
@@ -72,6 +75,3 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$_c_git_dirty%}*"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-unset hor_line
-unset venv_prompt_info

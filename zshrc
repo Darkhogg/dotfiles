@@ -15,20 +15,26 @@ ZSH_THEME='dhg'
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git npm archlinux systemd virtualenv)
+plugins=(git npm archlinux systemd virtualenv sudo nvmauto)
 _check virtualenvwrapper.sh && plugins+=(virtualenvwrapper)
 
-source "$ZSH/oh-my-zsh.sh"
 
 
 # ================ #
 # === SOURCING === #
 
 # Arch Linux command-not-found
-[ -f '/etc/profile.d/cnf.sh' ] && source '/etc/profile.d/cnf.sh'
+[ -s '/etc/profile.d/cnf.sh' ] && source '/etc/profile.d/cnf.sh'
 
 # Travis
-[ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
+[ -s "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
+
+# Node Version Manager
+[ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
+
+
+# OhMyZsh!!
+source "$ZSH/oh-my-zsh.sh"
 
 
 # =============== #
@@ -47,6 +53,9 @@ unset GREP_OPTIONS
 
 # Fix problems with node-gyp and python3
 alias npm='PYTHON=python2 npm'
+
+alias poweroff='sudo poweroff'
+alias reboot='sudo reboot'
 
 
 # === VARIABLES ===
@@ -67,14 +76,16 @@ export PATH="$HOME/.bin":"$HOME/.gem/ruby/2.2.0/bin":"$HOME/.local/bin":"$PATH"
 export EDITOR=nano
 
 
+
+
 # ======================= #
 # === PACKAGE MANAGER === #
 
 # Pacaur package manager
 _check pacaur && {
     alias pm=pacaur
-    alias pmnc='pacaur --noconfirm --noedit'
-    alias pmupd='pacaur -Syu --noconfirm --noedit'
+    alias pmnc='pm --noconfirm --noedit'
+    alias pmupd='pmnc -Syu'
 
     alias pmin='pmnc -S'  # PM Install
     alias pmrm='pmnc -R'  # PM Remove
@@ -83,9 +94,10 @@ _check pacaur && {
 
 # Apt-Get package manager
 _check apt-get && {
-    alias pm=apt-get
-    alias pmnc='apt-get -y'
-  
+    alias pm='sudo apt-get'
+    alias pmnc='pm -y --no-install-recommends'
+    alias pmupd='pmnc update && pmnc upgrade'
+
     alias pmin='pmnc install'
     alias pmrm='pmnc remove'
 }
@@ -97,5 +109,6 @@ _check pacman-mirrors \
 
 # =========== #
 # === END === #
+export -U PATH="$PATH"
 unalias _check
 tput el
