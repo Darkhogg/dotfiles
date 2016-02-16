@@ -15,10 +15,6 @@ ZSH_THEME='dhg'
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git npm archlinux systemd virtualenv sudo nvmauto)
-_check virtualenvwrapper.sh && plugins+=(virtualenvwrapper)
-
-
 
 # ================ #
 # === SOURCING === #
@@ -34,10 +30,11 @@ _check virtualenvwrapper.sh && plugins+=(virtualenvwrapper)
 
 
 # OhMyZsh!!
+plugins=(git npm archlinux systemd virtualenv sudo)
+_check virtualenvwrapper.sh && plugins+=(virtualenvwrapper)
+_check nvm && plugins+=(nvmauto)
 source "$ZSH/oh-my-zsh.sh"
 
-# Node Version manager
-[ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
 
 # =============== #
 # === ALIASES === #
