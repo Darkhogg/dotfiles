@@ -4,8 +4,6 @@ alias _check='type &>/dev/null'
 TMPLOCAL="$HOME/.local/tmp"
 mkdir -p "$TMPLOCAL"
 
-_CHECK_UPDATES=yes
-
 # =================
 # === OH-MY-ZSH ===
 
@@ -94,7 +92,7 @@ export EDITOR="$VISUAL"
 _check pacaur && {
     alias pm=pacaur
     alias pmnc='pm --noconfirm --noedit'
-    alias pmupd='pmnc -Syu; _CHECK_UPDATES=sync'
+    alias pmupd='pmnc -Syu'
 
     alias pmin='pmnc -S'  # PM Install
     alias pmrm='pmnc -R'  # PM Remove
@@ -108,7 +106,7 @@ _check pacaur && {
 _check apt-get && {
     alias pm='sudo apt-get'
     alias pmnc='pm -y --no-install-recommends'
-    alias pmupd='{ pmnc update && pmnc upgrade }; _CHECK_UPDATES=sync"'
+    alias pmupd='pmnc update && pmnc upgrade'
 
     alias pmin='pmnc install' # PM Install
     alias pmrm='pmnc remove' # PM Remove
@@ -117,8 +115,8 @@ _check apt-get && {
 
 # Update mirrors
 _check pacman-mirrors \
-    && alias pmmir='sudo pacman-mirrors -g; _CHECK_UPDATES=sync"' \
-    || alias pmmir='sudo reflector -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist; _CHECK_UPDATES=sync"'
+    && alias pmmir='sudo pacman-mirrors -g' \
+    || alias pmmir='sudo reflector -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
 # =========== #
 # === END === #
