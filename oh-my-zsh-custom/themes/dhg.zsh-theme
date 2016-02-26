@@ -66,12 +66,12 @@ local _p_dollar='$'; [[ $UID -eq 0 ]] && _p_dollar='#'
 PROMPT="$_p_status$_p_user$_p_host$_p_path\$(git_prompt_info)\$(_p_venv)\$(_p_nvm)
 %{$_c_prompt%}$_p_dollar %{$_c_reset%}"
 
-RPROMPT="%{$(tput cuu 1)%}$_p_separator%{$(tput cud 1)$_c_reset%}"
+RPROMPT="%{$(tput cuu 1)%}%{$(tput cud 1)$_c_reset%}"
 
 # Git plugin configuration
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$_c_git_branch%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$_c_reset%}$_p_separator"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$_c_git_dirty%}*"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$_c_git_dirty%}…"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1

@@ -1,6 +1,10 @@
 printf "$(tput bold; tput setf blue) :: $(tput sgr0)Loading ZshRC...\r"
 
 alias _check='type &>/dev/null'
+TMPLOCAL="$HOME/.local/tmp"
+mkdir -p "$TMPLOCAL"
+
+_CHECK_UPDATES=yes
 
 # =================
 # === OH-MY-ZSH ===
@@ -79,6 +83,8 @@ export VISUAL=nano
 export EDITOR="$VISUAL"
 
 
+# === FUNCTIONS ===
+
 
 
 # ======================= #
@@ -88,27 +94,31 @@ export EDITOR="$VISUAL"
 _check pacaur && {
     alias pm=pacaur
     alias pmnc='pm --noconfirm --noedit'
-    alias pmupd='pmnc -Syu'
+    alias pmupd='pmnc -Syu; _CHECK_UPDATES=sync'
 
     alias pmin='pmnc -S'  # PM Install
     alias pmrm='pmnc -R'  # PM Remove
     alias pmsr='pmnc -Ss' # PM Search
+
+    alias pmchk='checkupdates'
+    alias pmchkn='pmchk | wc -l'
 }
 
 # Apt-Get package manager
 _check apt-get && {
     alias pm='sudo apt-get'
     alias pmnc='pm -y --no-install-recommends'
-    alias pmupd='pmnc update && pmnc upgrade'
+    alias pmupd='{ pmnc update && pmnc upgrade }; _CHECK_UPDATES=sync"'
 
-    alias pmin='pmnc install'
-    alias pmrm='pmnc remove'
+    alias pmin='pmnc install' # PM Install
+    alias pmrm='pmnc remove' # PM Remove
+    alias pmsr='apt-cache search' # PM Search
 }
 
 # Update mirrors
 _check pacman-mirrors \
-    && alias pmmir='sudo pacman-mirrors -g' \
-    || alias pmmir='sudo reflector -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
+    && alias pmmir='sudo pacman-mirrors -g; _CHECK_UPDATES=sync"' \
+    || alias pmmir='sudo reflector -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist; _CHECK_UPDATES=sync"'
 
 # =========== #
 # === END === #
