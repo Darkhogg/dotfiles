@@ -1,6 +1,8 @@
 printf "$(tput bold; tput setf blue) :: $(tput sgr0)Loading ZshRC...\r"
 
 alias _check='type &>/dev/null'
+TMPLOCAL="$HOME/.local/tmp"
+mkdir -p "$TMPLOCAL"
 
 # =================
 # === OH-MY-ZSH ===
@@ -53,6 +55,9 @@ unset GREP_OPTIONS
 # Fix problems with node-gyp and python3
 alias npm='PYTHON=python2 \npm'
 
+alias poweroff='sudo poweroff'
+alias reboot='sudo reboot'
+
 
 # === VARIABLES ===
 
@@ -73,8 +78,6 @@ export VISUAL=nano
 export EDITOR="$VISUAL"
 
 
-
-
 # ======================= #
 # === PACKAGE MANAGER === #
 
@@ -87,6 +90,9 @@ _check pacaur && {
     alias pmin='pmnc -S'  # PM Install
     alias pmrm='pmnc -R'  # PM Remove
     alias pmsr='pmnc -Ss' # PM Search
+
+    alias pmchk='checkupdates'
+    alias pmchkn='pmchk | wc -l'
 }
 
 # Apt-Get package manager
@@ -95,8 +101,9 @@ _check apt-get && {
     alias pmnc='pm -y --no-install-recommends'
     alias pmupd='pmnc update && pmnc upgrade'
 
-    alias pmin='pmnc install'
-    alias pmrm='pmnc remove'
+    alias pmin='pmnc install' # PM Install
+    alias pmrm='pmnc remove' # PM Remove
+    alias pmsr='apt-cache search' # PM Search
 }
 
 # Update mirrors
