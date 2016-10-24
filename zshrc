@@ -55,9 +55,6 @@ unset GREP_OPTIONS
 # Fix problems with node-gyp and python3
 alias npm='PYTHON=python2 \npm'
 
-alias poweroff='sudo poweroff'
-alias reboot='sudo reboot'
-
 
 # === VARIABLES ===
 
