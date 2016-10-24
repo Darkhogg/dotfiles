@@ -30,11 +30,14 @@ COMPLETION_WAITING_DOTS="true"
 # Node Version Manager
 [ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
 
+# Ruby Version Manager
+[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
 
 # OhMyZsh!!
 plugins=(git npm archlinux systemd virtualenv sudo)
 _check virtualenvwrapper.sh && plugins+=(virtualenvwrapper)
 _check nvm && plugins+=(nvmauto)
+_check rvm && plugins+=(rvm)
 source "$ZSH/oh-my-zsh.sh"
 
 
@@ -68,7 +71,7 @@ _check nproc && export MAKEFLAGS="$MAKEFLAGS -j$(nproc)"
 export TERM=xterm-256color
 
 # Add local directories to the PATH
-export PATH="$HOME/.bin":"$HOME/.gem/ruby/2.2.0/bin":"$HOME/.local/bin":"$PATH"
+export PATH="$HOME/.bin":"$HOME/.local/bin":"$PATH"
 
 # For the love of everything, use nano!!
 export VISUAL=nano
@@ -113,3 +116,4 @@ _check pacman-mirrors \
 export -U PATH="$PATH"
 unalias _check
 tput el
+
