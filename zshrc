@@ -55,9 +55,6 @@ alias reset='env reset; source ~/.zshrc'
 alias grep='\grep $GREP_OPTIONS'
 unset GREP_OPTIONS
 
-# Fix problems with node-gyp and python3
-alias npm='PYTHON=python2 \npm'
-
 
 # === VARIABLES ===
 
@@ -116,4 +113,3 @@ _check pacman-mirrors \
 export -U PATH="$PATH"
 unalias _check
 tput el
-
