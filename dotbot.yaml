@@ -5,10 +5,6 @@
   shell:
     - ["touch ~/.hushlogin", "Hush Login"]
   link:
-    ~/.gitconfig:
-      force: true
-      path: gitconfig
-
     ~/.gnupg/gpg.conf:
       force: true
       create: true
