@@ -28,7 +28,9 @@ COMPLETION_WAITING_DOTS="true"
 [ -s "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
 
 # Node Version Manager
-[ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
+[ -s "$HOME/.nvm/nvm.sh" ]     && source "$HOME/.nvm/nvm.sh"
+[ -s "/usr/share/nvm/nvm.sh" ] && source "/usr/share/nvm/nvm.sh"
+_check nvm && NVM_DIR="$HOME/.nvm"
 
 # Ruby Version Manager
 [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
@@ -74,6 +76,8 @@ export PATH="$HOME/.bin":"$HOME/.local/bin":"$PATH"
 export VISUAL=nano
 export EDITOR="$VISUAL"
 
+# Hack for Aseprite AUR package
+export ASEPRITE_ACCEPT_EULA=yes
 
 # ======================= #
 # === PACKAGE MANAGER === #
