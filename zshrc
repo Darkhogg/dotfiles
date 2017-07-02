@@ -70,7 +70,7 @@ _check nproc && export MAKEFLAGS="$MAKEFLAGS -j$(nproc)"
 export TERM=xterm-256color
 
 # Add local directories to the PATH
-export PATH="$HOME/.bin":"$HOME/.local/bin":"$PATH"
+export PATH="$PATH":"$HOME/.bin":"$HOME/.local/bin"
 
 # For the love of everything, use nano!!
 export VISUAL=nano
