@@ -57,6 +57,9 @@ alias reset='env reset; source ~/.zshrc'
 alias grep='\grep $GREP_OPTIONS'
 unset GREP_OPTIONS
 
+# aliases for webtask/wiredtiger
+alias wiredtiger='env wt'
+alias wt='webtask'
 
 # === VARIABLES ===
 
