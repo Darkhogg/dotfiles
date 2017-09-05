@@ -28,7 +28,9 @@ COMPLETION_WAITING_DOTS="true"
 [ -s "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
 
 # Node Version Manager
-[ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
+[ -s "$HOME/.nvm/nvm.sh" ]     && source "$HOME/.nvm/nvm.sh"
+[ -s "/usr/share/nvm/nvm.sh" ] && source "/usr/share/nvm/nvm.sh"
+_check nvm && NVM_DIR="$HOME/.nvm"
 
 # Ruby Version Manager
 [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
@@ -55,6 +57,9 @@ alias reset='env reset; source ~/.zshrc'
 alias grep='\grep $GREP_OPTIONS'
 unset GREP_OPTIONS
 
+# aliases for webtask/wiredtiger
+alias wiredtiger='env wt'
+alias wt='webtask'
 
 # === VARIABLES ===
 
@@ -68,11 +73,14 @@ _check nproc && export MAKEFLAGS="$MAKEFLAGS -j$(nproc)"
 export TERM=xterm-256color
 
 # Add local directories to the PATH
-export PATH="$HOME/.bin":"$HOME/.local/bin":"$PATH"
+export PATH="$PATH":"$HOME/.bin":"$HOME/.local/bin"
 
 # For the love of everything, use nano!!
 export VISUAL=nano
 export EDITOR="$VISUAL"
+
+# Hack for Aseprite AUR package
+export ASEPRITE_ACCEPT_EULA=yes
 
 # Node
 export NODE_PRESERVE_SYMLINKS=1
