@@ -74,6 +74,8 @@ export PATH="$HOME/.bin":"$HOME/.local/bin":"$PATH"
 export VISUAL=nano
 export EDITOR="$VISUAL"
 
+# Node
+export NODE_PRESERVE_SYMLINKS=1
 
 # ======================= #
 # === PACKAGE MANAGER === #
