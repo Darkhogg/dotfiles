@@ -16,10 +16,8 @@ function _nvma_checkparent {
 }
 
 function _nvma_nvmuse_cwd {
-  if _nvma_checkparent package.json; then
-    nvm use . &>/dev/null
-
   if [[ -n "$nvmrc" ]] || _nvma_checkparent package.json >/dev/null; then
+    nvm use . &>/dev/null
     NVMA_PROMPT=yes
   else
     NVMA_PROMPT=
