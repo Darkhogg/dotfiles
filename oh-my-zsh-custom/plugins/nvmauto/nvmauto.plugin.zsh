@@ -16,7 +16,7 @@ function _nvma_checkparent {
 
 function _nvma_nvmuse_cwd {
   if _nvma_checkparent package.json; then
-    nvm use &>/dev/null
+    nvm use . &>/dev/null
 
     NVMA_PROMPT=yes
   else
