@@ -74,6 +74,7 @@ export TERM=xterm-256color
 
 # Add local directories to the PATH
 export PATH="$PATH":"$HOME/.bin":"$HOME/.local/bin"
+_check ruby && PATH="$PATH":"$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
 
 # For the love of everything, use nano!!
 export VISUAL=nano
@@ -124,3 +125,4 @@ _check apt-get && {
 export -U PATH="$PATH"
 unalias _check
 tput el
+
