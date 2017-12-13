@@ -1,9 +1,9 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "nanorc.d"]
-	path = nanorc.d
-	url = https://github.com/nanorc/nanorc
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "nanorc.d"]
+	path = nanorc.d
+	url = https://github.com/scopatz/nanorc.git
