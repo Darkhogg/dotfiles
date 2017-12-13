@@ -32,14 +32,11 @@ COMPLETION_WAITING_DOTS="true"
 [ -s "/usr/share/nvm/nvm.sh" ] && source "/usr/share/nvm/nvm.sh"
 _check nvm && NVM_DIR="$HOME/.nvm"
 
-# Ruby Version Manager
-[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
 
 # OhMyZsh!!
 plugins=(git npm archlinux systemd virtualenv sudo)
 _check virtualenvwrapper.sh && plugins+=(virtualenvwrapper)
 _check nvm && plugins+=(nvmauto)
-_check rvm && plugins+=(rvm)
 source "$ZSH/oh-my-zsh.sh"
 
 
@@ -73,7 +70,7 @@ _check nproc && export MAKEFLAGS="$MAKEFLAGS -j$(nproc)"
 export TERM=xterm-256color
 
 # Add local directories to the PATH
-export PATH="$PATH":"$HOME/.bin":"$HOME/.local/bin"
+export PATH="$HOME/.bin":"$HOME/.gem/ruby/2.2.0/bin":"$HOME/.local/bin":"$PATH"
 
 # For the love of everything, use nano!!
 export VISUAL=nano
@@ -97,6 +94,10 @@ _check pacaur && {
 
     alias pmchk='checkupdates'
     alias pmchkn='pmchk | wc -l'
+
+    _check pacman-mirrors \
+        && alias pmmir='sudo pacman-mirrors -g' \
+        || alias pmmir='sudo reflector -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 }
 
 # Apt-Get package manager
@@ -109,11 +110,6 @@ _check apt-get && {
     alias pmrm='pmnc remove' # PM Remove
     alias pmsr='apt-cache search' # PM Search
 }
-
-# Update mirrors
-_check pacman-mirrors \
-    && alias pmmir='sudo pacman-mirrors -g' \
-    || alias pmmir='sudo reflector -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
 # =========== #
 # === END === #
