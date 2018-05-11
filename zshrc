@@ -28,9 +28,10 @@ COMPLETION_WAITING_DOTS="true"
 [ -s "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
 
 # Node Version Manager
+NVM_DIR="$HOME/.nvm"
 [ -s "$HOME/.nvm/nvm.sh" ]     && source "$HOME/.nvm/nvm.sh"
 [ -s "/usr/share/nvm/nvm.sh" ] && source "/usr/share/nvm/nvm.sh"
-_check nvm && NVM_DIR="$HOME/.nvm"
+_check nvm || NVM_DIR=
 
 
 # OhMyZsh!!
@@ -48,14 +49,14 @@ _check hub && alias git=hub
 _check subl3 && alias subl=subl3
 
 # Alias for reset
-alias reset='env reset; source ~/.zshrc'
+alias reset='\reset; source ~/.zshrc'
 
 # Fix GREP_OPTIONS messages
 alias grep='\grep $GREP_OPTIONS'
 unset GREP_OPTIONS
 
 # aliases for webtask/wiredtiger
-alias wiredtiger='env wt'
+alias wiredtiger='\wt'
 alias wt='webtask'
 
 # === VARIABLES ===
