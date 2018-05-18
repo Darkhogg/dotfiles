@@ -7,3 +7,6 @@
 [submodule "nanorc.d"]
 	path = nanorc.d
 	url = https://github.com/scopatz/nanorc.git
+[submodule "oh-my-zsh-custom/plugins/syntax-highlighting"]
+	path = oh-my-zsh-custom/plugins/syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
