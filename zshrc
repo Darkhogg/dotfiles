@@ -43,14 +43,21 @@ source "$ZSH/oh-my-zsh.sh"
 # =============== #
 # === ALIASES === #
 
-# Alias for hub
+# mkcd function
+
+function mkcd () {
+  mkdir -p -- "$1" \
+  && cd -P -- "$1"
+}
+
+# alias for hub
 _check hub && alias git=hub
 _check subl3 && alias subl=subl3
 
-# Alias for reset
+# alias for reset
 alias reset='env reset; source ~/.zshrc'
 
-# Fix GREP_OPTIONS messages
+# fix GREP_OPTIONS messages
 alias grep='\grep $GREP_OPTIONS'
 unset GREP_OPTIONS
 
