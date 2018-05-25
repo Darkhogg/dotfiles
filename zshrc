@@ -44,7 +44,7 @@ plugins+=(syntax-highlighting) # must be last
 # === THEME OPTIONS === #
 
 SPACESHIP_PROMPT_ORDER=(
-  time
+  exit_code time
   user host dir
   git #hg
   package
@@ -59,7 +59,7 @@ SPACESHIP_PROMPT_ORDER=(
   kubecontext
   exec_time line_sep battery
   #vi_mode
-  jobs exit_code char
+  jobs char
 )
 
 SPACESHIP_PROMPT_ADD_NEWLINE=false
