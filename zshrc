@@ -45,7 +45,7 @@ plugins+=(syntax-highlighting) # must be last
 
 SPACESHIP_PROMPT_ORDER=(
   time
-  host user dir
+  user host dir
   git #hg
   package
   node
