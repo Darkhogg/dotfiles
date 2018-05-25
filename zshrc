@@ -1,5 +1,3 @@
-printf "$(tput bold; tput setf blue) :: $(tput sgr0)Loading ZshRC...\r"
-
 alias _check='type &>/dev/null'
 TMPLOCAL="$HOME/.local/tmp"
 mkdir -p "$TMPLOCAL"
@@ -12,10 +10,11 @@ ZSH="$HOME/.dotfiles/oh-my-zsh/"
 ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh-custom/"
 
 # Theme for OMZ
-ZSH_THEME='dhg'
+ZSH_THEME='spaceship'
+SPACESHIP_PROMPT_DEFAULT_SUFFIX='  '
 
-DISABLE_AUTO_UPDATE="true"
-COMPLETION_WAITING_DOTS="true"
+DISABLE_AUTO_UPDATE=true
+COMPLETION_WAITING_DOTS=true
 
 
 # ================ #
@@ -41,11 +40,33 @@ _check nvm && plugins+=(nvmauto)
 source "$ZSH/oh-my-zsh.sh"
 plugins+=(syntax-highlighting) # must be last
 
+# ===================== #
+# === THEME OPTIONS === #
+
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_PREFIXES_SHOW=false
+SPACESHIP_CHAR_COLOR_SUCCESS=white
+
+SPACESHIP_USER_SHOW=always
+SPACESHIP_USER_COLOR=green
+
+SPACESHIP_DIR_COLOR=blue
+SPACESHIP_DIR_TRUNC=0
+
+SPACESHIP_HOST_COLOR=yellow
+
+SPACESHIP_GIT_STATUS_COLOR=gray
+
+SPACESHIP_EXEC_TIME_COLOR=black
+SPACESHIP_EXEC_TIME_ELAPSED=3
+
+SPACESHIP_EXIT_CODE_SHOW=true
+
+
 # =============== #
 # === ALIASES === #
 
 # mkcd function
-
 function mkcd () {
   mkdir -p -- "$1" \
   && cd -P -- "$1"
@@ -123,4 +144,3 @@ _check apt-get && {
 # === END === #
 export -U PATH="$PATH"
 unalias _check
-tput el
