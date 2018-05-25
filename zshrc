@@ -16,7 +16,6 @@ SPACESHIP_PROMPT_DEFAULT_SUFFIX='  '
 DISABLE_AUTO_UPDATE=true
 COMPLETION_WAITING_DOTS=true
 
-
 # ================ #
 # === SOURCING === #
 
@@ -37,8 +36,8 @@ _check nvm || NVM_DIR=
 plugins=(git npm archlinux systemd virtualenv sudo)
 _check virtualenvwrapper.sh && plugins+=(virtualenvwrapper)
 _check nvm && plugins+=(nvmauto)
-source "$ZSH/oh-my-zsh.sh"
 plugins+=(zsh-syntax-highlighting) # must be last
+source "$ZSH/oh-my-zsh.sh"
 
 # ===================== #
 # === THEME OPTIONS === #
