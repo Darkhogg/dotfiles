@@ -43,6 +43,25 @@ plugins+=(syntax-highlighting) # must be last
 # ===================== #
 # === THEME OPTIONS === #
 
+SPACESHIP_PROMPT_ORDER=(
+  time
+  host user dir
+  git #hg
+  package
+  node
+  #ruby elixir xcode swift golang php
+  rust
+  #haskell julia
+  docker
+  aws
+  venv
+  #conda pyenv dotnet ember
+  kubecontext
+  exec_time line_sep battery
+  #vi_mode
+  jobs exit_code char
+)
+
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_PREFIXES_SHOW=false
 SPACESHIP_CHAR_COLOR_SUCCESS=white
