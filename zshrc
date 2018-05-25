@@ -38,7 +38,7 @@ plugins=(git npm archlinux systemd virtualenv sudo)
 _check virtualenvwrapper.sh && plugins+=(virtualenvwrapper)
 _check nvm && plugins+=(nvmauto)
 source "$ZSH/oh-my-zsh.sh"
-plugins+=(syntax-highlighting) # must be last
+plugins+=(zsh-syntax-highlighting) # must be last
 
 # ===================== #
 # === THEME OPTIONS === #
