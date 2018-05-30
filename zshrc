@@ -43,7 +43,7 @@ source "$ZSH/oh-my-zsh.sh"
 # === THEME OPTIONS === #
 
 SPACESHIP_PROMPT_ORDER=(
-  exit_code time
+  exit_code
   user host dir
   git #hg
   package
@@ -60,6 +60,10 @@ SPACESHIP_PROMPT_ORDER=(
   #vi_mode
   jobs char
 )
+SPACESHIP_RPROMPT_ORDER=(time)
+
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_TIME_COLOR=black
 
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_PREFIXES_SHOW=false
