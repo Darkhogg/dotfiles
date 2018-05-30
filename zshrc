@@ -78,7 +78,12 @@ SPACESHIP_DIR_TRUNC=0
 SPACESHIP_HOST_COLOR=yellow
 SPACESHIP_HOST_COLOR_SSH=yellow
 
-SPACESHIP_GIT_STATUS_COLOR=gray
+SPACESHIP_GIT_STATUS_COLOR=white
+SPACESHIP_GIT_STATUS_PREFIX=''
+SPACESHIP_GIT_STATUS_SUFFIX=''
+SPACESHIP_GIT_STATUS_AHEAD='↑'
+SPACESHIP_GIT_STATUS_BEHIND='↓'
+SPACESHIP_GIT_STATUS_DIVERGED='↕'
 
 SPACESHIP_EXEC_TIME_COLOR=black
 SPACESHIP_EXEC_TIME_ELAPSED=3
@@ -94,6 +99,9 @@ function mkcd () {
   mkdir -p -- "$1" \
   && cd -P -- "$1"
 }
+
+# always call docker with sudo
+_check sudo && alias docker='sudo docker'
 
 # alias for hub
 _check hub && alias git=hub
