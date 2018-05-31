@@ -45,17 +45,10 @@ source "$ZSH/oh-my-zsh.sh"
 SPACESHIP_PROMPT_ORDER=(
   exit_code
   user host dir
-  git #hg
+  git hg
   package
-  node
-  #ruby elixir xcode swift golang php
-  rust
-  #haskell julia
-  docker
-  aws
-  venv
-  #conda pyenv dotnet ember
-  kubecontext
+  node ruby elixir xcode swift golang php rust haskell julia venv conda pyenv dotnet ember
+  docker aws kubecontext
   exec_time line_sep battery
   #vi_mode
   jobs char
@@ -67,7 +60,14 @@ SPACESHIP_TIME_COLOR=black
 
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_PREFIXES_SHOW=false
-SPACESHIP_CHAR_COLOR_SUCCESS=white
+
+SPACESHIP_CHAR_COLOR=white
+SPACESHIP_CHAR_COLOR_SUCCESS="$SPACESHIP_CHAR_COLOR"
+SPACESHIP_CHAR_COLOR_FAILURE="$SPACESHIP_CHAR_COLOR"
+SPACESHIP_CHAR_COLOR_SECONDARY="SPACESHIP_CHAR_COLOR"
+SPACESHIP_CHAR_SYMBOL='$ '
+SPACESHIP_CHAR_SYMBOL_ROOT='# '
+SPACESHIP_CHAR_SYMBOL_SECONDARY='> '
 
 SPACESHIP_USER_SHOW=always
 SPACESHIP_USER_COLOR=green
